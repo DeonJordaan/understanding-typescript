@@ -1,0 +1,19 @@
+{
+  "name": "understanding-typescript",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeonJordaan/understanding-typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeonJordaan/understanding-typescript/issues"
+  },
+  "homepage": "https://github.com/DeonJordaan/understanding-typescript#readme",
+  "description": ""
+}
