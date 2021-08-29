@@ -1,25 +1,15 @@
-type Combined = number | string;
-type ConversionDescriptor = 'as-number' | 'as-text';
+let userInput: unknown;
+let userName: string;
 
-function combine(
-	input1: Combined,
-	input2: Combined,
-	resultConversion: ConversionDescriptor
-) {
-	let result;
-	if (
-		(typeof input1 === 'number' && typeof input2 === 'number') ||
-		resultConversion === 'as-number'
-	) {
-		result = +input1 + +input2;
-	} else {
-		result = input1.toString() + input2.toString();
-	}
-	return result;
+userInput = 5;
+userInput = 'Max';
+
+if (typeof userInput === 'string') {
+	userName = userInput;
 }
 
-const combinedAges = combine(30, 26, 'as-number');
-console.log(combinedAges);
+function generateError(message: string, code: number): never {
+	throw { message: message, errorCode: code };
+}
 
-const combinedNames = combine('Max', 'Anna', 'as-text');
-console.log(combinedNames);
+generateError('The shit has hit the fan!', 5000000);
