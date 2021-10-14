@@ -1,7 +1,7 @@
 class Department {
 	// private id: string;
 	// private name: string;
-	private employees: string[] = [];
+	protected employees: string[] = [];
 
 	constructor(private readonly id: string, public name: string) {
 		// this.name = n;
@@ -63,12 +63,37 @@ ITDept.describe();
 ITDept.printEmployeeInformation();
 
 class AccountingDepartment extends Department {
+	private lastReport: string;
+
+	get mostRecentReport() {
+		if (this.lastReport) {
+			return this.lastReport;
+		}
+		throw new Error('Nothing to see here');
+	}
+
+	set mostRecentReport(value: string) {
+		if (!value) {
+			throw new Error('What is this nonsense?!');
+		}
+		this.addReport(value);
+	}
+
 	constructor(id: string, private reports: string[]) {
 		super(id, 'Accounting');
+		this.lastReport = reports[0];
+	}
+
+	addEmployee(name: string) {
+		if (name === 'Max') {
+			return;
+		}
+		this.employees.push(name);
 	}
 
 	addReport(text: string) {
 		this.reports.push(text);
+		this.lastReport = text;
 	}
 
 	printReports() {
@@ -79,7 +104,16 @@ class AccountingDepartment extends Department {
 const accounting = new AccountingDepartment('ac1', []);
 
 accounting.addReport('Accounting SUCKS!');
+// accounting.mostRecentReport = '';
+accounting.mostRecentReport = 'Lots of nonsense!';
+console.log(accounting.mostRecentReport);
 
 accounting.printReports();
 
 console.log(accounting);
+
+accounting.addEmployee('Max');
+accounting.addEmployee('Frikkie');
+accounting.addReport('Max');
+
+accounting.printEmployeeInformation();
